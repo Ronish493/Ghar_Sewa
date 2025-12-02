@@ -1,6 +1,7 @@
 {% load static crispy_forms_tags socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
@@ -97,7 +98,7 @@
             border-radius: 10px;
         }
 
-        .form label .input + span {
+        .form label .input+span {
             position: absolute;
             left: 10px;
             top: 15px;
@@ -107,19 +108,19 @@
             transition: 0.3s ease;
         }
 
-        .form label .input:placeholder-shown + span {
+        .form label .input:placeholder-shown+span {
             top: 15px;
             font-size: 0.9em;
         }
 
-        .form label .input:focus + span,
-        .form label .input:valid + span {
+        .form label .input:focus+span,
+        .form label .input:valid+span {
             top: 30px;
             font-size: 0.7em;
             font-weight: 600;
         }
 
-        .form label .input:valid + span {
+        .form label .input:valid+span {
             color: green;
         }
 
@@ -182,6 +183,7 @@
                 transform: scale(0.9);
                 opacity: 1;
             }
+
             to {
                 transform: scale(1.8);
                 opacity: 0;
@@ -189,6 +191,7 @@
         }
     </style>
 </head>
+
 <body>
     <form method="post" class="form">
         {% csrf_token %}
@@ -196,26 +199,26 @@
         <p class="message">Signup now and get full access to our app.</p>
 
         {% if form.errors %}
-            <div class="alert alert-danger">
-                {% for field, errors in form.errors.items %}
-                    {% for error in errors %}
-                        <p>{{ error }}</p>
-                    {% endfor %}
-                {% endfor %}
-            </div>
+        <div class="alert alert-danger">
+            {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+            {% endfor %}
+        </div>
         {% endif %}
 
         <!-- Name field -->
         <label>
-            <input type="text" name="name" class="input" id="id_name" required 
-                   value="{{ form.name.value|default_if_none:'' }}">
+            <input type="text" name="name" class="input" id="id_name" required
+                value="{{ form.name.value|default_if_none:'' }}">
             <span>Full Name</span>
         </label>
 
         <!-- Email field -->
         <label>
-            <input type="email" name="email" class="input" id="id_email" required 
-                   value="{{ form.email.value|default_if_none:'' }}">
+            <input type="email" name="email" class="input" id="id_email" required
+                value="{{ form.email.value|default_if_none:'' }}">
             <span>Email</span>
         </label>
 
@@ -240,10 +243,10 @@
         <button type="submit" class="submit">Sign Up</button>
 
         <!-- Google Sign In button -->
-        <p class="message text-center">Sign in with:</p>
+        <!-- <p class="message text-center">Sign in with:</p>
         <a href="{% provider_login_url 'google' %}" class="btn-google">
             <img src="{% static 'img/google-icon.png' %}" alt="Google"> Sign in with Google
-        </a>
+        </a> -->
 
         <p class="signin">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
     </form>
@@ -259,4 +262,5 @@
         }
     </script>
 </body>
+
 </html>

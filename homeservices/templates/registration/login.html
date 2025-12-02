@@ -1,6 +1,7 @@
 {% load static socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Sign In</title>
@@ -94,7 +95,7 @@
             border-radius: 10px;
         }
 
-        .form label .input + span {
+        .form label .input+span {
             position: absolute;
             left: 10px;
             top: 15px;
@@ -104,19 +105,19 @@
             transition: 0.3s ease;
         }
 
-        .form label .input:placeholder-shown + span {
+        .form label .input:placeholder-shown+span {
             top: 15px;
             font-size: 0.9em;
         }
 
-        .form label .input:focus + span,
-        .form label .input:valid + span {
+        .form label .input:focus+span,
+        .form label .input:valid+span {
             top: 30px;
             font-size: 0.7em;
             font-weight: 600;
         }
 
-        .form label .input:valid + span {
+        .form label .input:valid+span {
             color: green;
         }
 
@@ -168,6 +169,7 @@
                 transform: scale(0.9);
                 opacity: 1;
             }
+
             to {
                 transform: scale(1.8);
                 opacity: 0;
@@ -175,6 +177,7 @@
         }
     </style>
 </head>
+
 <body>
     <form method="post" class="form" action="{% url 'login' %}">
         {% csrf_token %}
@@ -183,27 +186,27 @@
 
         <!-- Display Django messages -->
         {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-danger">
-                    {{ message }}
-                </div>
-            {% endfor %}
+        {% for message in messages %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {% endfor %}
         {% endif %}
 
         <!-- Display form errors -->
         {% if form.errors %}
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <div class="alert alert-danger">
-                        {{ error }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
-            {% for error in form.non_field_errors %}
-                <div class="alert alert-danger">
-                    {{ error }}
-                </div>
-            {% endfor %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endfor %}
         {% endif %}
 
         <label>
@@ -218,12 +221,13 @@
 
         <button type="submit" class="submit">Login</button>
 
-        <p class="message text-center">Sign in with:</p>
+        <!-- <p class="message text-center">Sign in with:</p>
         <a href="{% provider_login_url 'google' process='login' %}?prompt=select_account" class="btn-google">
             <img src="{% static 'img/google-icon.png' %}" alt="Google"> Sign in with Google
-        </a>
+        </a> -->
 
         <p class="signup">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
     </form>
 </body>
+
 </html>
